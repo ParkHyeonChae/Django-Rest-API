@@ -53,11 +53,12 @@ DJANGO_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'debug_toolbar', # django-debug-toolbar
+    'knox', # django-rest-knox
     'rest_framework',
 ]
 
 PROJECT_APPS = [
-
+    'api.apps.ApiConfig',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
@@ -75,6 +76,12 @@ MIDDLEWARE = [
 ]
 
 
+# django-rest-knox
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": ("knox.auth.TokenAuthentication",),
+}
+
+# django-debug-toolbar
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
