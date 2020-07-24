@@ -1,0 +1,5 @@
+# pip install -r requirements.txt
+
+Django==3.0.2
+djangorestframework==3.11.0
+django-debug-toolbar==2.2
