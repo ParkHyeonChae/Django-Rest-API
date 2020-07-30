@@ -75,7 +75,6 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware', # django-debug-toolbar Middleware
 ]
 
-
 # django-rest-knox
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": ("knox.auth.TokenAuthentication",),
@@ -86,10 +85,7 @@ INTERNAL_IPS = [
     '127.0.0.1',
 ]
 
-
-ROOT_URLCONF = 'django_rest_api.urls'
-
-
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
@@ -106,8 +102,7 @@ TEMPLATES = [
         },
     },
 ]
-
-WSGI_APPLICATION = 'django_rest_api.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database
@@ -168,4 +163,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, '.static')
 MEDIA_URL = '/media/' # 업로드 할 경로
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
