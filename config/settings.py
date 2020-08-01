@@ -55,6 +55,7 @@ DJANGO_APPS = [
     'debug_toolbar', # django-debug-toolbar
     'knox', # django-rest-knox
     'rest_framework',
+    'drf_yasg',
 ]
 
 PROJECT_APPS = [
