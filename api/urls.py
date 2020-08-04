@@ -1,11 +1,10 @@
 """api/urls.py"""
 
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 
 urlpatterns = [
-    path("auth/register/", views.RegistrationAPI.as_view()),
-    path("auth/login/", views.LoginAPI.as_view()),
-    path("auth/user/", views.UserAPI.as_view()),
+    path('rest-auth/', include("rest_auth.urls")),
+    path('rest-auth/registration/', include('rest_auth.registration.urls')),
 ]
