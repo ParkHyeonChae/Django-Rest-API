@@ -53,7 +53,6 @@ DJANGO_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'debug_toolbar', # django-debug-toolbar
-    'knox', # django-rest-knox
     'django.contrib.sites',
     'drf_yasg',
     'rest_framework',
@@ -65,22 +64,10 @@ DJANGO_APPS = [
 ]
 
 PROJECT_APPS = [
-    'api.apps.ApiConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
-
-
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
-
-    ]
-}
-
-SITE_ID = 1
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -93,10 +80,15 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware', # django-debug-toolbar Middleware
 ]
 
-# django-rest-knox
 REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": ("knox.auth.TokenAuthentication",),
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+
+    ]
 }
+
+SITE_ID = 1
 
 # django-debug-toolbar
 INTERNAL_IPS = [

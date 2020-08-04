@@ -9,6 +9,7 @@ from rest_framework.permissions import (
     BasePermission
 )
 
+app_name = "api"
 
 schema_url_patterns = [
     path('api/', include(urlpatterns)),
@@ -31,8 +32,6 @@ schema_view = get_schema_view(
     patterns=schema_url_patterns,
 )
 
-
-app_name = "api"
 
 urlpatterns = [
     # path('swagger<str:format>', schema_view.without_ui(cache_timeout=0), name='schema-json'),

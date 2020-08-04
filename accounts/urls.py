@@ -1,8 +1,8 @@
-"""api/urls.py"""
+from django.urls import include, path
+from rest_framework import routers
 
-from django.urls import path, include
-from . import views
 
+app_name = "accounts"
 
 urlpatterns = [
     path('rest-auth/', include("rest_auth.urls")),
