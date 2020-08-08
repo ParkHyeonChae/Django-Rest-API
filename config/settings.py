@@ -190,28 +190,30 @@ REST_AUTH_SERIALIZERS = {
 }
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
+LOGIN_URL = '/api/accounts/auth/login/'
 
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-ACCOUNT_UNIQUE_EMAIL = True
-ACCOUNT_LOGOUT_ON_GET = False
 # 'mandatory' : 인증메일 발송, 로그인 불가, 'optional' : 인증메일 발송, 로그인 가능, 'none'
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_LOGOUT_ON_GET = False # False: LOGOUT POST만 허용
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
-ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/accounts/profile/'
-ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = reverse_lazy('account_confirm_complete') 
-ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = reverse_lazy('account_confirm_complete')
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = False # True: 이메일인증 링크를 누르면 자동 로그인
+ACCOUNT_EMAIL_SUBJECT_PREFIX = '[DjangoREST]'
+# ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+# ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = reverse_lazy('account_confirm_complete') 
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = LOGIN_URL
 
 SITE_ID = 1
 
 
 # SMTP
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.naver.com'
 EMAIL_HOST_USER = 'injecs2020@naver.com'
 EMAIL_HOST_PASSWORD = get_secret("EMAIL_HOST_PASSWORD")
