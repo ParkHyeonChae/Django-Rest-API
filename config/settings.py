@@ -83,10 +83,12 @@ MIDDLEWARE = [
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
@@ -222,3 +224,18 @@ EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = 'injecs2020@naver.com'
 
 EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = '/'
+
+
+# JWT
+
+REST_USE_JWT = True
+
+from datetime import datetime, timedelta
+
+JWT_AUTH = { 
+    'JWT_SECRET_KEY': get_secret("SECRET_KEY"),
+    'JWT_ALGORITHM': 'HS256',
+    'JWT_ALLOW_REFRESH': True, 
+    'JWT_EXPIRATION_DELTA': timedelta(days=7), 
+    'JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=28), 
+}
