@@ -1,6 +1,6 @@
 # pip install -r requirements.txt
 
-Django==3.0.2
+Django==3.0.14
 djangorestframework==3.11.0
 django-rest-knox==4.1.0
 django-debug-toolbar==2.2
